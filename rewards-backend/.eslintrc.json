@@ -1,0 +1,21 @@
+{
+  "extends": ["airbnb-base"],
+  "parserOptions": { "sourceType": "module", "ecmaVersion": 2022 },
+  "env": { "es6": true, "node": true, "browser": true },
+  "rules": {
+    "camelcase": "off",
+    "no-unused-expressions": [
+      "error",
+      {
+        "allowShortCircuit": true,
+        "allowTernary": true
+      }
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 150
+      }
+    ]
+  }
+}
