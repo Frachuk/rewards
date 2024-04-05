@@ -4,11 +4,15 @@ import { LoginPage } from '../pages/login';
 import { RegisterPage } from '../pages/register';
 import { useAuth } from '../providers/Auth';
 import { DashboardPage } from '../pages/dashboard';
+import PropTypes from 'prop-types';
 
-// eslint-disable-next-line react/prop-types
 const PrivateRoute = ({ children }) => {
   const { accountData } = useAuth();
   return accountData?.name ? children : <Navigate to="/login" />;
+};
+
+PrivateRoute.propTypes = {
+  children: PropTypes.any,
 };
 
 export const router = createBrowserRouter([

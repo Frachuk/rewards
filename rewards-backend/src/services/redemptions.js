@@ -3,6 +3,9 @@ import Redemption from '../models/redemption';
 import AccountsRepository from '../repositories/accounts';
 import RewardsRepository from '../repositories/rewards';
 import KnexRepository from '../repositories';
+import NotEnoughCreditsException from '../exceptions/notEnoughCredits';
+import RewardNotFoundException from '../exceptions/rewardNotFound';
+import UserNotFoundException from '../exceptions/userNotFound';
 
 export default class RedemptionsService {
   static redeem = async ({ user_id, reward_id }) => {
@@ -11,14 +14,14 @@ export default class RedemptionsService {
       const [rewardData] = await trx(RewardsRepository.tableName).select('*').where('id', reward_id);
 
       const conditions = [
-        [!accountsData, 'User not found'],
-        [!rewardData, 'Reward not found'],
-        [accountsData?.credits < rewardData?.points_required, 'User does not have enough credits'],
+        [!accountsData, new UserNotFoundException('User not found')],
+        [!rewardData, new RewardNotFoundException('Reward not found')],
+        [accountsData?.credits < rewardData?.points_required, new NotEnoughCreditsException('User does not have enough credits')],
       ];
 
-      const [errorCondition, message] = conditions.find(([condition]) => condition) || [];
+      const [errorCondition, error] = conditions.find(([condition]) => condition) || [];
 
-      if (errorCondition) throw new Error(message);
+      if (errorCondition) throw error;
 
       const [update_result] = await AccountsRepository.updateCredits(user_id, accountsData.credits - rewardData.points_required, trx);
       await RedemptionsRepository.insert(new Redemption({ user_id, reward_id }), trx);

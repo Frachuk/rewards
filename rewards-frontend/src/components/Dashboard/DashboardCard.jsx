@@ -8,9 +8,7 @@ export const DashboardCard = () => {
     <Flex alignItems="center" p={4} borderWidth={1} borderRadius={8} boxShadow="lg">
       <Avatar name={accountData.first_name} />
       <Box ml={3} textAlign="left">
-        <Text>
-          {accountData.name} {accountData.last_name}
-        </Text>
+        <Text>{accountData.name}</Text>
         <Text>Balance: {accountData.credits}</Text>
       </Box>
     </Flex>
