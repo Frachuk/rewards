@@ -52,4 +52,10 @@ export default class AccountsService {
 
     return result;
   };
+
+  static getCreditsByUserId = async (user_id) => {
+    const result = await AccountsRepository.getCreditsByUserId(user_id);
+
+    return result;
+  };
 }

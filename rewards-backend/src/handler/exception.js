@@ -4,7 +4,7 @@ import { generateErrorResponse, logger } from '../utils';
 export default class ExceptionHandler {
   // The properties below must match the class name of the exception
   static errors = {
-    UserNotFoundException: (res, message) => res.status(constants.HTTP_STATUS_UNAUTHORIZED).send(generateErrorResponse(message)),
+    UserNotFoundException: (res, message) => res.status(constants.HTTP_STATUS_NOT_FOUND).send(generateErrorResponse(message)),
   };
 
   // eslint-disable-next-line no-unused-vars

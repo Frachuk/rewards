@@ -50,4 +50,17 @@ export default class AccountsController {
       next(error);
     }
   };
+
+  static getCreditsByUserId = async (req, res, next) => {
+    try {
+      const { params: { user_id } } = req;
+      const [result] = await AccountsService.getCreditsByUserId(user_id);
+
+      if (!result) throw new UserNotFoundException('User not found');
+
+      res.json(generateSuccessResponse({ result }));
+    } catch (error) {
+      next(error);
+    }
+  };
 }

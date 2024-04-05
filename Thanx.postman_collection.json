@@ -44,7 +44,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/account/1",
+							"raw": "http://localhost:3000/account/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -52,6 +52,27 @@
 							"port": "3000",
 							"path": [
 								"account",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCreditsByUserId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/credits/user/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"credits",
+								"user",
 								"1"
 							]
 						}
@@ -191,7 +212,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"user_id\": 1,\n    \"reward_id\": 1\n}",
+							"raw": "{\n    \"user_id\": 3,\n    \"reward_id\": 10\n}",
 							"options": {
 								"raw": {
 									"language": "json"

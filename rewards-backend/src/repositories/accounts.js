@@ -37,4 +37,9 @@ export default class AccountsRepository extends KnexRepository {
       name,
       password,
     });
+
+  static getCreditsByUserId = async (user_id) => AccountsRepository.client(AccountsRepository.tableName)
+    .select(`${AccountsRepository.tableName}.credits`)
+    .join(UsersRepository.tableName, 'users.id', `${AccountsRepository.tableName}.user_id`)
+    .where('user_id', user_id);
 }
