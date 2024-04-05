@@ -1,6 +1,7 @@
 #!/bin/sh
 set -e
 
+. abin/node/seeds.sh
 . abin/node/migrations.sh
 
 nodeStartScript() {
@@ -11,4 +12,5 @@ nodeStartScript() {
 }
 
 nodeRunMigrations
+nodeRunSeeds
 nodeStartScript

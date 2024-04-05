@@ -1,11 +1,11 @@
-import { Button, FormControl, Heading, Input, Stack } from '@chakra-ui/react';
+import { Button, FormControl, Heading, Input, Stack, FormHelperText } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { useAuth } from '../../providers/Auth';
 import { useNavigate } from 'react-router-dom';
 
 export const LoginForm = () => {
   const navigate = useNavigate();
-  const { login, accountData } = useAuth();
+  const { login, accountData, loginError } = useAuth();
 
   const [input, setInput] = useState({
     name: '',
@@ -40,6 +40,7 @@ export const LoginForm = () => {
         </FormControl>
         <FormControl isRequired>
           <Input placeholder="Password" type="password" name="password" onChange={handleInput} />
+          {loginError && <FormHelperText textColor="red">Wrong username or password</FormHelperText>}
         </FormControl>
         <Button colorScheme="cyan" size="lg" type="submit">
           Login

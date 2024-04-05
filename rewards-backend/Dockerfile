@@ -15,6 +15,7 @@ COPY src src/
 COPY babel.config.js ./
 COPY knexfile.js ./
 COPY migrations migrations/
+COPY seeds seeds/
 
 
 RUN chmod +x -R ./abin
@@ -35,6 +36,7 @@ RUN adduser -D -S limited-user
 COPY --from=prerelease /app/package.json ./
 COPY --from=prerelease /app/node_modules/ ./node_modules/
 COPY --from=prerelease /app/abin/node/migrations.sh ./abin/node/migrations.sh
+COPY --from=prerelease /app/abin/node/seeds.sh ./abin/node/seeds.sh
 COPY --from=prerelease /app/abin/node/start.sh ./abin/node/start.sh
 COPY --from=prerelease /app/dist/ ./dist/
 

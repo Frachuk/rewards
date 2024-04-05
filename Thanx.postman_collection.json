@@ -1,0 +1,291 @@
+{
+	"info": {
+		"_postman_id": "fdefa79e-baec-4bf2-bf31-8e89eb8dc122",
+		"name": "Thanx",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12412750",
+		"_collection_link": "https://cobra-kai.postman.co/workspace/AMC~ff09a0b1-72ab-4794-a570-70de8efd25ce/collection/12412750-fdefa79e-baec-4bf2-bf31-8e89eb8dc122?action=share&source=collection_link&creator=12412750"
+	},
+	"item": [
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "Insert",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"accountData\": {\n        \"name\": \"Peppa\",\n        \"password\": \"37983714\"\n    },\n    \"userData\": {\n        \"first_name\": \"Franco\",\n        \"last_name\": \"Mischuk\",\n        \"email\": \"mischuk.ti@gmail.com\",\n        \"age\": 30\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/account",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByUserId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/account/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"account",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Franco\",\n    \"password\": \"37983714\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rewards",
+			"item": [
+				{
+					"name": "Insert",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Free Coffee\",\n    \"description\": \"Redeem for a complimentary coffee of your choice\",\n    \"points_required\": 50\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/reward",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"reward"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/rewards",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"rewards"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "11",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insert Bulk",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"name\": \"Free Coffee\",\n        \"description\": \"Redeem this reward for a free cup of coffee.\",\n        \"points_required\": 50,\n        \"active\": true\n    },\n    {\n        \"name\": \"Discount Coupon\",\n        \"description\": \"Get a 20% discount on your next purchase.\",\n        \"points_required\": 100,\n        \"active\": true\n    },\n    {\n        \"name\": \"Movie Ticket\",\n        \"description\": \"Redeem this reward for a free movie ticket.\",\n        \"points_required\": 150,\n        \"active\": true\n    },\n    {\n        \"name\": \"Amazon Gift Card\",\n        \"description\": \"Get a $10 Amazon gift card.\",\n        \"points_required\": 200,\n        \"active\": true\n    },\n    {\n        \"name\": \"Fitness Class Pass\",\n        \"description\": \"Redeem this reward for a free fitness class pass.\",\n        \"points_required\": 75,\n        \"active\": true\n    },\n    {\n        \"name\": \"Restaurant Voucher\",\n        \"description\": \"Get a $20 voucher for your favorite restaurant.\",\n        \"points_required\": 120,\n        \"active\": true\n    },\n    {\n        \"name\": \"Spa Treatment\",\n        \"description\": \"Redeem this reward for a relaxing spa treatment.\",\n        \"points_required\": 250,\n        \"active\": true\n    },\n    {\n        \"name\": \"Book Discount\",\n        \"description\": \"Get 30% off on your next book purchase.\",\n        \"points_required\": 80,\n        \"active\": true\n    },\n    {\n        \"name\": \"Gym Membership\",\n        \"description\": \"Get a one-month free gym membership.\",\n        \"points_required\": 300,\n        \"active\": true\n    },\n    {\n        \"name\": \"Movie Streaming Subscription\",\n        \"description\": \"Get a one-month subscription to a movie streaming service.\",\n        \"points_required\": 200,\n        \"active\": true\n    },\n    {\n        \"name\": \"Free Yoga Session\",\n        \"description\": \"Redeem this reward for a free yoga session.\",\n        \"points_required\": 90,\n        \"active\": true\n    },\n    {\n        \"name\": \"Tech Gadget Discount\",\n        \"description\": \"Get 25% off on your next tech gadget purchase.\",\n        \"points_required\": 150,\n        \"active\": true\n    },\n    {\n        \"name\": \"Music Concert Ticket\",\n        \"description\": \"Redeem this reward for a ticket to a live music concert.\",\n        \"points_required\": 180,\n        \"active\": true\n    },\n    {\n        \"name\": \"Online Course Voucher\",\n        \"description\": \"Get a voucher for an online course of your choice.\",\n        \"points_required\": 120,\n        \"active\": true\n    },\n    {\n        \"name\": \"Travel Voucher\",\n        \"description\": \"Get a $50 voucher for your next travel booking.\",\n        \"points_required\": 400,\n        \"active\": true\n    },\n    {\n        \"name\": \"Free Haircut\",\n        \"description\": \"Redeem this reward for a free haircut at a salon.\",\n        \"points_required\": 60,\n        \"active\": true\n    },\n    {\n        \"name\": \"Shopping Spree\",\n        \"description\": \"Get a $100 shopping voucher for your favorite store.\",\n        \"points_required\": 500,\n        \"active\": true\n    },\n    {\n        \"name\": \"Home Appliance Discount\",\n        \"description\": \"Get 15% off on your next home appliance purchase.\",\n        \"points_required\": 250,\n        \"active\": true\n    },\n    {\n        \"name\": \"Fine Dining Experience\",\n        \"description\": \"Redeem this reward for a luxurious fine dining experience.\",\n        \"points_required\": 300,\n        \"active\": true\n    },\n    {\n        \"name\": \"Fitness Tracker\",\n        \"description\": \"Get a fitness tracker device to monitor your workouts.\",\n        \"points_required\": 350,\n        \"active\": true\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/rewards/bulk",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"rewards",
+								"bulk"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Redemptions",
+			"item": [
+				{
+					"name": "Insert",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 1,\n    \"reward_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/redemption",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"redemption"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByUserId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/redemptions/user/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"redemptions",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Credits",
+			"item": [
+				{
+					"name": "updateCredits",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 5000,\n    \"user_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/credits",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"credits"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Healthz",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/healthz",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"healthz"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

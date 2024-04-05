@@ -13,6 +13,7 @@ export const useAuth = () => useContext(AuthContext);
 // eslint-disable-next-line react/prop-types
 export const AuthProvider = ({ children }) => {
   const accountDataKey = 'accountData';
+  const [loginError, setLoginError] = useState(false);
   const [accountData, setAccountData] = useState(getDataFromLocalStorage(accountDataKey) || {});
 
   const login = async (body) => {
@@ -24,10 +25,13 @@ export const AuthProvider = ({ children }) => {
         status,
       };
 
+      if (accountData?.status !== 200) throw new Error('Login error');
+
       localStorage.setItem(accountDataKey, JSON.stringify(accountData));
       setAccountData(accountData);
+      setLoginError(false);
     } catch (error) {
-      console.error('Login failed:', error);
+      setLoginError(true);
       setAccountData({});
     }
   };
@@ -37,7 +41,7 @@ export const AuthProvider = ({ children }) => {
     setAccountData({});
   };
 
-  const obj = useMemo(() => ({ login, logout, accountData, setAccountData }), [accountData]);
+  const obj = useMemo(() => ({ login, logout, accountData, setAccountData, loginError }), [accountData, loginError]);
 
   return <AuthContext.Provider value={obj}>{children}</AuthContext.Provider>;
 };
